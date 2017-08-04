@@ -24,14 +24,14 @@ namespace RecurringDates.Serialization
         private IList<TypeInfo> GetRuleTypes(Assembly assembly)
         {
             return assembly.DefinedTypes
-                .Where(t => typeof (IRule).IsAssignableFrom(t))
+                .Where(t => typeof (IRule).GetTypeInfo().IsAssignableFrom(t))
                 .Where(t => !t.IsInterface)
                 .ToList();
         }
 
         public IEnumerator<Type> GetEnumerator()
         {
-            return _typesByAssembly.Values.SelectMany(x => x).GetEnumerator();
+            return _typesByAssembly.Values.SelectMany(x => x).Cast<Type>().GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()

@@ -1,16 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E814D3CD-7343-47F6-B494-4FFC97EE9201}</ProjectGuid>
+    <ProjectGuid>{4E4270F4-42FD-446C-94D4-92623B44F408}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RecurringDates</RootNamespace>
     <AssemblyName>RecurringDates</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile44</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,50 +33,37 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <Content Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseRule.cs" />
     <Compile Include="BetweenDatesRule.cs" />
     <Compile Include="DayInMonthRule.cs" />
     <Compile Include="DayOfWeekRule.cs" />
     <Compile Include="DaysOfWeekRule.cs" />
     <Compile Include="EveryDayRule.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="Helpers\NumberHelpers.cs" />
     <Compile Include="Helpers\StringHelpers.cs" />
     <Compile Include="IEnumerableRule.cs" />
     <Compile Include="IRule.cs" />
     <Compile Include="Month.cs" />
-    <Compile Include="MonthsRule.cs" />
     <Compile Include="MonthsFilterRule.cs" />
+    <Compile Include="MonthsRule.cs" />
     <Compile Include="NotRule.cs" />
     <Compile Include="NthBeforeAfterRule.cs" />
+    <Compile Include="NthDayBeforeAfterRule.cs" />
     <Compile Include="NthInMonthRule.cs" />
-    <Compile Include="BaseRule.cs" />
-    <Compile Include="Helpers\NumberHelpers.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\RuleTypeCache.cs" />
     <Compile Include="Serialization\SerializationHelpers.cs" />
     <Compile Include="SetDifferenceRule.cs" />
     <Compile Include="SetIntersectionRule.cs" />
     <Compile Include="SetUnionRule.cs" />
-    <Compile Include="NthDayBeforeAfterRule.cs" />
     <Compile Include="StartingAtDateRule.cs" />
     <Compile Include="UnaryRule.cs" />
     <Compile Include="WorkDayRule.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

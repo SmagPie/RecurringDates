@@ -102,15 +102,18 @@ namespace RecurringDates.Serialization
 
         private string SerializeInternal(IRule rule, params object[] ruleTypesAssemblies)
         {
-            
+
             var serializer = GetSerializer(ruleTypesAssemblies);
             StringWriter sw = new StringWriter();
-            XmlTextWriter xw = new XmlTextWriter(sw);
+
+            XmlWriter xw = XmlWriter.Create(sw);
+
             serializer.WriteObject(xw, rule);
+            xw.Flush();
             return sw.ToString();
         }
 
-        private static readonly Assembly _ruleAssembly = typeof (IRule).Assembly;
+        private static readonly Assembly _ruleAssembly = typeof (IRule).GetTypeInfo().Assembly;
 
         private static object[] GetLoadList(object[] parameters)
         {
