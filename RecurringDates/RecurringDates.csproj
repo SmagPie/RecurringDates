@@ -65,5 +65,8 @@
     <Compile Include="UnaryRule.cs" />
     <Compile Include="WorkDayRule.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="RecurringDates.nuspec" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>
